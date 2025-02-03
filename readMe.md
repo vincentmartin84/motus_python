@@ -3,6 +3,11 @@
 Ce programme python est inspiré du jeux télévisé motus, le principe est simple un mot est généré de manière aléatoire par le programme, l’utilisateur doit trouver le mot en 6 tentatives, l’utilisateur propose un mot, si une lettre est correcte et se trouve à la bonne place le programme l’affiche sinon le programme affiche un . pour les consonne et un * pour les voyelles.
 si l’utilisateur échoue un message lui indique le mot qui été à trouver et lui propose de recommencer.
 
+##API trouve-mot 
+Cette API permet de générer un mot aléatoire en français à partir de cette URI: 
+https://trouve-mot.fr/api/random
+
+
 ##Description des fichiers
 ###main.py
 Ce fichier est le fichier principale du programme
