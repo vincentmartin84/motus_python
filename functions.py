@@ -1,4 +1,10 @@
 import requests
+import unicodedata
+
+def remove_accents(word):
+    return ''.join(c for c in unicodedata.normalize('NFD', word) if unicodedata.category(c) != 'Mn')
+
+
 
 def generate_word():
     response = requests.get("https://trouve-mot.fr/api/random")
@@ -19,18 +25,26 @@ def generate_word():
 
 def word_input():
     while True:
-        user_word= input("Saisir un mot : ")
+        user_word= input("Saisir un mot : ").lower()
         if not user_word or not user_word.isalpha():
             print("La Saisie est incorrecte!")
             continue
         return user_word
 
-def compatible_letters(random_word, user_word):
-    voyelles = ("a","e","i","o","u","y")
-    for l in random_word:
-        #print(l)
-        for c in user_word:
-            #print(c)
 
-            if c == l :
-                print(c)
+def compatible_letters(random_word, user_word):
+    voyelles = ("a", "e", "i", "o", "u", "y")
+
+
+    if len(user_word) != len(random_word):
+        print("Les mots doivent avoir la même longueur.")
+        return
+
+    # Parcourir chaque lettre des deux mots
+    for l, c in zip(random_word, user_word):
+        if c == l:
+            print(c, end='')
+        else:
+            print(".", end='')
+
+
